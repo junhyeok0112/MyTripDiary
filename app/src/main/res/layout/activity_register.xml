@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/register_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MTD"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/register_id_tv"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="ID : "
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintEnd_toStartOf="@id/register_id_et"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <EditText
+        android:id="@+id/register_id_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/register_id_tv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:hint="이메일을 입력해주세요"/>
+
+    <TextView
+        android:id="@+id/register_pw_tv"
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="PW :"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintEnd_toStartOf="@id/register_pw_et"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/register_pw_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/register_pw_tv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:inputType="textPassword"
+        app:layout_constraintVertical_bias="0.5"
+        android:hint="패스워드를 입력해주세요"/>
+
+    <Button
+        android:id="@+id/register_register_btn"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/register_exit_btn"/>
+
+    <Button
+        android:id="@+id/register_exit_btn"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="나가기"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/register_register_btn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274461795239",
+    "project_id": "mytripdiary-df59b",
+    "storage_bucket": "mytripdiary-df59b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274461795239:android:9d4d5c280ae4144ac08c82",
+        "android_client_info": {
+          "package_name": "org.techtown.mtd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274461795239-nocqgvg3ibtaumtjhcor12ifm26675n5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJiaT072_14UVfQapVdukjSuUBYmFQ9Mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274461795239-nocqgvg3ibtaumtjhcor12ifm26675n5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
