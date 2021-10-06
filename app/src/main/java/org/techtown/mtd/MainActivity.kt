@@ -2,12 +2,10 @@ package org.techtown.mtd
 
 
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.naver.maps.map.MapView
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.OnMapReadyCallback
+import org.techtown.mtd.Fragment.BoardFragment
+import org.techtown.mtd.Fragment.HomeFragment
 import org.techtown.mtd.databinding.ActivityMainBinding
 
 
@@ -20,8 +18,40 @@ class MainActivity : AppCompatActivity()  {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initNavigation()
 
 
+        binding.mainBottomNavigationBn.setOnItemSelectedListener {
+            when(it.itemId){      //바텀 네비게이션 뷰에 있는 아이콘들을 클릭했을 때 메뉴의 아이디 정보가 넘어감
+                R.id.notice_board->{
+                    with(supportFragmentManager.beginTransaction()){
+                        val boardFragment = BoardFragment()
+                        replace(binding.mainContainerFl.id, boardFragment)
+                        commit()
+                    }
+                    binding.mainBottomNavigationBn.menu.getItem(0).isChecked = true
+                    return@setOnItemSelectedListener true
+                }
+                R.id.map->{
+                    with(supportFragmentManager.beginTransaction()){
+                        val homeFragment = HomeFragment()
+                        replace(binding.mainContainerFl.id , homeFragment)
+                        commit()
+                    }
+                    binding.mainBottomNavigationBn.menu.getItem(1).isChecked = true
+                    return@setOnItemSelectedListener true
+
+                }
+            }
+            return@setOnItemSelectedListener false
+        }
+
+    }
+
+    fun initNavigation(){
+        supportFragmentManager.beginTransaction()
+            .replace(binding.mainContainerFl.id , HomeFragment())
+            .commitAllowingStateLoss()
     }
 
 }
