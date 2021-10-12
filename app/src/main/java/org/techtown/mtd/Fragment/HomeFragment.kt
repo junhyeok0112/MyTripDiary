@@ -1,14 +1,18 @@
 package org.techtown.mtd.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
+import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
 import org.techtown.mtd.R
+import org.techtown.mtd.SaveActivity
 import org.techtown.mtd.databinding.FragmentHomeBinding
 
 
@@ -39,6 +43,20 @@ class HomeFragment : Fragment() ,OnMapReadyCallback {
 
         binding.homeAddFab.setOnClickListener {
             //내 위치에 마커 추가
+            //테스트로 위도 경도 리턴 , fusedlocationsource의 현재 위치는 lastLocation과 동일
+            val cameraPosition = naverMap.cameraPosition
+//            Toast.makeText(context ,
+//            "위도 : ${cameraPosition.target.latitude} 경도 : ${cameraPosition.target.longitude}" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(context ,
+                "위도 : ${locationSource.lastLocation?.latitude} 경도 : ${locationSource.lastLocation?.longitude}" , Toast.LENGTH_SHORT).show()
+
+            plusMarker(locationSource.lastLocation?.latitude!! , locationSource.lastLocation?.longitude!!)
+
+            val intent = Intent(context, SaveActivity::class.java)
+            intent.putExtra("latitude" , locationSource.lastLocation?.latitude)
+            intent.putExtra("longitude", locationSource.lastLocation?.longitude)
+            startActivity(intent)
+
         }
 
         return binding.root
@@ -47,6 +65,7 @@ class HomeFragment : Fragment() ,OnMapReadyCallback {
 
     override fun onMapReady(naverMap: NaverMap) {
         //내 위치 추적 구현하기
+
         //내 위치로 이동하기 버튼 활성화 -> XML에서 가능
         this.naverMap = naverMap
         naverMap.locationSource = locationSource
@@ -59,7 +78,16 @@ class HomeFragment : Fragment() ,OnMapReadyCallback {
         naverMap.locationTrackingMode = LocationTrackingMode.Face
 
 
+
     }
+
+    fun plusMarker(latitude:Double , longitude:Double){
+
+        val marker = Marker()
+        marker.position = LatLng(latitude, longitude)
+        marker.map = naverMap
+    }
+
 
 
     //위치 권한 받는 코드
@@ -80,4 +108,6 @@ class HomeFragment : Fragment() ,OnMapReadyCallback {
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
     }
+
+
 }

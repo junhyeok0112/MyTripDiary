@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import org.techtown.mtd.Fragment.BoardFragment
 import org.techtown.mtd.Fragment.HomeFragment
 import org.techtown.mtd.databinding.ActivityMainBinding
+import org.techtown.mtd.util.myCheckPermission
 
 
 class MainActivity : AppCompatActivity()  {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity()  {
         setContentView(binding.root)
 
         initNavigation()
-
+        myCheckPermission(this)             //파일 접근 권한 허용
 
         binding.mainBottomNavigationBn.setOnItemSelectedListener {
             when(it.itemId){      //바텀 네비게이션 뷰에 있는 아이콘들을 클릭했을 때 메뉴의 아이디 정보가 넘어감
